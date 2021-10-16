@@ -13,12 +13,12 @@ namespace WeatherApp.ViewModels
 
         public double KPHtoMPS(double kph)
         {
-            return kph * 1000 / 3600;
+            return Math.Round(kph * 1000 / 3600, 2);
         }
 
         public double MPStoKPH(double mps)
         {
-            return mps * 3600 / 1000;
+            return Math.Round(mps * 3600 / 1000, 2);
         }
         public bool CanGetData(object obj)
         {

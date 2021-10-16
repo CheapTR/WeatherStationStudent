@@ -53,11 +53,12 @@ namespace WeatherStationTests
         public void KPHtoMPS_AlwaysReturnGoodValue(double kph, double expected)
         {
             // Arrange
-
+            WindDataViewModel obj = new WindDataViewModel();
             // Act       
+            var actual = obj.KPHtoMPS(kph);
 
             // Assert
-
+            Assert.Equal(expected, actual);
             /// TODO : git commit -a -m "T02 KPHtoMPS_AlwaysReturnGoodValue : Done"
         }
 
