@@ -72,6 +72,7 @@ namespace WeatherStationTests
         public void GetDataCommand_ExecuteIfNullService_ShouldThrowNullException()
         {
             // Arrange
+
             // Act       
 
             // Assert
@@ -148,9 +149,25 @@ namespace WeatherStationTests
         {
             // Arrange
 
+
+            Mock<IWindDataService> MockWindDataService = new Mock<IWindDataService>();
+            WindDataModel wdm = new WindDataModel();
+            wdm.DateTime = DateTime.Now;
+            wdm.MetrePerSec = 33.55;
+            wdm.Direction = 22.77;
+            Mock<WindDataModel> MockWindDataModel = new Mock<WindDataModel>();
+
+            MockWindDataService.Setup(w => w.GetDataAsync()).Returns(Task.FromResult(wdm));
+            _sut.SetWindDataService(MockWindDataService.Object);
+
             // Act       
 
+            _sut.GetData("");
+            var actual = _sut.CurrentData;
+
             // Assert
+
+            Assert.NotNull(actual);
 
             /// TODO : git commit -a -m "T07 GetDataCommand_HaveCurrentDataWhenExecuted_ShouldPass : Done"
         }
