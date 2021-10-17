@@ -112,7 +112,7 @@ namespace WeatherStationTests
             // Act       
             var actual = _sut.CanGetData();
 
-            // Assert
+            // Assert 
 
             Assert.Equal(actual, expected);
 
