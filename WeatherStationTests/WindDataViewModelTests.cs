@@ -28,9 +28,8 @@ namespace WeatherStationTests
         public void MPStoKPH_AlwaysReturnGoodValue(double mps, double expected)
         {
             // Arrange
-            WindDataViewModel obj = new WindDataViewModel();
             // Act       
-            var actual = obj.MPStoKPH(mps);
+            var actual = _sut.MPStoKPH(mps);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -53,9 +52,8 @@ namespace WeatherStationTests
         public void KPHtoMPS_AlwaysReturnGoodValue(double kph, double expected)
         {
             // Arrange
-            WindDataViewModel obj = new WindDataViewModel();
             // Act       
-            var actual = obj.KPHtoMPS(kph);
+            var actual = _sut.KPHtoMPS(kph);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -70,11 +68,10 @@ namespace WeatherStationTests
         public void GetDataCommand_ExecuteIfNullService_ShouldThrowNullException()
         {
             // Arrange
-            WindDataViewModel obj = new WindDataViewModel();
             // Act       
 
             // Assert
-            Assert.Throws<NullReferenceException>( () => obj.GetDataCommand.Execute(null));
+            Assert.Throws<NullReferenceException>( () => _sut.GetDataCommand.Execute(_sut.WindDataService));
             /// TODO : git commit -a -m "T03 GetDataCommand_ExecuteIfNullService_ShouldThrowNullException : Done"
         }
 

@@ -2,12 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 using WeatherApp.Commands;
+using WeatherApp.Models;
+using WeatherApp.Services;
 
 namespace WeatherApp.ViewModels
 {
     public class WindDataViewModel : BaseViewModel
     {
         /// TODO : Ajoutez le code nécessaire pour réussir les tests et répondre aux requis du projet
+
+        public IWindDataService WindDataService;
+        public WindDataModel CurrendData;
+
+        public void SetWindDataService(IWindDataService obj)
+        {
+            WindDataService = obj;
+        }
 
         public DelegateCommand<string> GetDataCommand { get; private set; }
 
@@ -22,7 +32,10 @@ namespace WeatherApp.ViewModels
         }
         public bool CanGetData()
         {
-            throw new NotImplementedException();
+            if (WindDataService != null)
+                return true;
+
+            return false;
         }
 
 
