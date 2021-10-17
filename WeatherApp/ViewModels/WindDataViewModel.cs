@@ -20,7 +20,7 @@ namespace WeatherApp.ViewModels
         {
             return Math.Round(mps * 3600 / 1000, 2);
         }
-        public bool CanGetData(object obj)
+        public bool CanGetData()
         {
             throw new NotImplementedException();
         }
