@@ -127,10 +127,14 @@ namespace WeatherStationTests
         public void SetWindDataService_WhenExecuted_WindDataServiceIsNotNull()
         {
             // Arrange
+            Mock<IWindDataService> MockWindDataService = new Mock<IWindDataService>();
+
+            _sut.SetWindDataService(MockWindDataService.Object);
 
             // Act       
-
+            var actual = _sut.WindDataService;
             // Assert
+            Assert.NotNull(actual);
 
             /// TODO : git commit -a -m "T06 SetWindDataService_WhenExecuted_WindDataServiceIsNotNull : Done"
         }
