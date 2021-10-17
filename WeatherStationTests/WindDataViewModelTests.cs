@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Moq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
+using WeatherApp.Models;
+using WeatherApp.Services;
 using WeatherApp.ViewModels;
 using Xunit;
 
@@ -88,6 +92,8 @@ namespace WeatherStationTests
 
             // Assert
 
+            Assert.False(_sut.CanGetData());
+
             /// TODO : git commit -a -m "T04 CanGetData_WhenServiceIsNull_ReturnsFalse : Done"
         }
 
@@ -99,10 +105,16 @@ namespace WeatherStationTests
         public void CanGetData_WhenServiceIsSet_ReturnsTrue()
         {
             // Arrange
+            var expected = true;
+            Mock<IWindDataService> MockWindDataService = new Mock<IWindDataService>();
+            _sut.SetWindDataService(MockWindDataService.Object);
 
             // Act       
+            var actual = _sut.CanGetData();
 
             // Assert
+
+            Assert.Equal(actual, expected);
 
             /// TODO : git commit -a -m "T05 CanGetData_WhenServiceIsSet_ReturnsTrue : Done"
         }
