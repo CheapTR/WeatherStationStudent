@@ -72,7 +72,6 @@ namespace WeatherStationTests
         public void GetDataCommand_ExecuteIfNullService_ShouldThrowNullException()
         {
             // Arrange
-
             // Act       
 
             // Assert

@@ -53,6 +53,8 @@ namespace WeatherApp.ViewModels
 
                 CurrentData = task.Result;
             }
+            else
+                throw new NullReferenceException();
         }
 
     }
